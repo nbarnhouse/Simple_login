@@ -8,16 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
-    var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world!")
-        }
-        .padding()
+    var body: some View{
+    
+    Color.black.edgesIgnoringSafeArea(.all)
+       
+      
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+            .foregroundColor(Color.white)
+
+
     }
-}
+    }
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
