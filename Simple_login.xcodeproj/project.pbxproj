@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		580EC59A29CBB0E20083B497 /* SignupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EC59929CBB0E20083B497 /* SignupView.swift */; };
+		580EC59C29CBB6800083B497 /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 580EC59B29CBB6800083B497 /* AuthView.swift */; };
 		5877DE4729CA85F100A2474A /* Simple_loginApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877DE4629CA85F100A2474A /* Simple_loginApp.swift */; };
 		5877DE4929CA85F100A2474A /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5877DE4829CA85F100A2474A /* ContentView.swift */; };
 		5877DE4B29CA85F200A2474A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5877DE4A29CA85F200A2474A /* Assets.xcassets */; };
@@ -16,6 +18,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		580EC59929CBB0E20083B497 /* SignupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupView.swift; sourceTree = "<group>"; };
+		580EC59B29CBB6800083B497 /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
+		580EC5B729CBD19F0083B497 /* Simple-login-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Simple-login-Info.plist"; sourceTree = SOURCE_ROOT; };
 		5877DE4329CA85F100A2474A /* Simple_login.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Simple_login.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5877DE4629CA85F100A2474A /* Simple_loginApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_loginApp.swift; sourceTree = "<group>"; };
 		5877DE4829CA85F100A2474A /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,8 +60,11 @@
 		5877DE4529CA85F100A2474A /* Simple_login */ = {
 			isa = PBXGroup;
 			children = (
+				580EC5B729CBD19F0083B497 /* Simple-login-Info.plist */,
 				5877DE4629CA85F100A2474A /* Simple_loginApp.swift */,
+				580EC59B29CBB6800083B497 /* AuthView.swift */,
 				5877DE4829CA85F100A2474A /* ContentView.swift */,
+				580EC59929CBB0E20083B497 /* SignupView.swift */,
 				5877DE5429CA873700A2474A /* LoginView.swift */,
 				5877DE5629CA987400A2474A /* ViewModifier.swift */,
 				5877DE4A29CA85F200A2474A /* Assets.xcassets */,
@@ -145,8 +153,10 @@
 			files = (
 				5877DE5529CA873700A2474A /* LoginView.swift in Sources */,
 				5877DE4929CA85F100A2474A /* ContentView.swift in Sources */,
+				580EC59C29CBB6800083B497 /* AuthView.swift in Sources */,
 				5877DE4729CA85F100A2474A /* Simple_loginApp.swift in Sources */,
 				5877DE5729CA987400A2474A /* ViewModifier.swift in Sources */,
+				580EC59A29CBB0E20083B497 /* SignupView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -278,9 +288,9 @@
 				DEVELOPMENT_TEAM = PVR89A229Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Simple-login-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,9 +317,9 @@
 				DEVELOPMENT_TEAM = PVR89A229Z;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Simple-login-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

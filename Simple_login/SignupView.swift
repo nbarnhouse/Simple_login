@@ -1,14 +1,13 @@
 //
-//  LoginView.swift
+//  SignupView.swift
 //  Simple_login
 //
-//  Created by Nicole Barnhouse on 3/21/23.
+//  Created by Nicole Barnhouse on 3/22/23.
 //
 
 import SwiftUI
 
-
-struct LoginView: View {
+struct SignupView: View {
     @Binding var currentShowingView: String
     
     @State private var email: String = ""
@@ -20,15 +19,16 @@ struct LoginView: View {
             
             VStack {
                 HStack{//1//
-                    Text("Welcome Back!")
+                    Text("Create An Account")
                         .font(.largeTitle)
                         .bold()
+                        .foregroundColor(Color.black)
                     
                     Spacer()
                 }//End of HStack 1//
                 
                 .padding()
-                .padding(.horizontal, 50)
+                .padding(.horizontal, 20)
                 .padding(.top)
                 
               
@@ -90,27 +90,20 @@ struct LoginView: View {
                 
                 
                 
-                .padding(.horizontal)
                 
+         
+                    
                 Spacer()
                     
-                Button(action: {
-                        print("Button tapped!")
-                    }, label: {
-                        Text("Forgot Password")
-                            .foregroundColor(Color.black)
-                    })
-                    
-                .padding(3)
                 
                 
-                Text("Don't Have an account?")
+                Text("Already have an account?")
                 Button(action: {
                     withAnimation {
-                        self.currentShowingView = "signup"
+                        self.currentShowingView = "login"
                     }
                   }){
-                        Text ("Register")
+                        Text ("Login")
                     }
                 
             } //End of VStack
@@ -119,5 +112,3 @@ struct LoginView: View {
     }
                 
 }
-        
-    
