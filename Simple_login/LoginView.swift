@@ -74,7 +74,7 @@ struct LoginView: View {
                 Button(action: {
                         print("Button tapped!")
                     }, label: {
-                        Text("Submit")
+                        Text("Submit Now")
                             .foregroundColor(Color.white)
                             .font(.title2)
                         
