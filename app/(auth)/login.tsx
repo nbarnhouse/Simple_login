@@ -1,25 +1,48 @@
-import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import {
+  Text,
+  TouchableOpacity,
+  SafeAreaView,
+  StyleSheet,
+  TextInput,
+} from "react-native";
 import React from "react";
-import { Link, useRouter } from "expo-router";
+import { useRouter, Link } from "expo-router";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const LoginScreen = () => {
   const router = useRouter();
 
-  const handleLogin = async () => {
-    await AsyncStorage.setItem("userToken", "abc123");
-    router.replace("/");
-  };
+  // const handleLogin = async () => {
+  //   await AsyncStorage.setItem("userToken", "abc123");
+  //   router.replace("/");
+  // };
 
   return (
     <SafeAreaView>
       <Text>LoginScreen</Text>
+
+      <TextInput style={styles.inputField}></TextInput>
+
       <TouchableOpacity onPress={() => router.back()}>
         <Text>Go back</Text>
       </TouchableOpacity>
+      <Text>
+        Don't have an account? <Link href="/(auth)/register">Sign Up </Link>
+      </Text>
     </SafeAreaView>
   );
 };
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+  },
+
+  inputField: {
+    width: 343,
+    height: 602,
+  },
+});

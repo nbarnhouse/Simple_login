@@ -9,22 +9,25 @@ export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Image source={logo} height={10} width={30} />
-        <Image source={deskTimeLogo} />
+        <Image source={logo} style={styles.logo} />
+        <Image source={deskTimeLogo} style={styles.deskImage} />
         <Text style={styles.title}>DeskTime Login</Text>
-        <Text>Your digital desk awaits.</Text>
+        <Text style={styles.tagline}>Your digital desk awaits.</Text>
+        <Text style={styles.body}>
+          Stay organized, focused, and on top of your day. This app is your
+          personal workspace hub — like sitting down at your desk, anytime,
+          anywhere.
+        </Text>
       </View>
-      <Text style={styles.body}>
-        This app is your personal workspace hub — designed to help you stay
-        organized, focused, and productive. Whether you're managing tasks,
-        tracking appointments, or simply staying on top of your day, our clean
-        interface and intuitive tools make it easy to log in and get to work.
-        It's like sitting down at your desk — anytime, anywhere.
-      </Text>
+
       <View style={styles.footer}>
-        <Text>Ready to get started?</Text>
-        <Link href={"/login"}>Go to login</Link>
-        <Link href={"/register"}>Go to sign in</Link>
+        <Text style={styles.body}>Ready to get started?</Text>
+        <Link href={"/login"} style={styles.body}>
+          Go to login
+        </Link>
+        <Link href={"/register"} style={styles.body}>
+          Go to sign in
+        </Link>
       </View>
     </SafeAreaView>
   );
@@ -33,16 +36,31 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
     padding: 20,
-    justifyContent: "space-between",
+    justifyContent: "space-around",
     backgroundColor: "#e5eef8",
   },
-  header: {},
+  header: { alignItems: "center", gap: 10 },
   title: {
     fontSize: 36,
     marginBottom: 10,
   },
-  body: {},
-  footer: {},
+  tagline: { fontSize: 16, fontStyle: "italic", color: "#555" },
+  logo: { height: 50, resizeMode: "contain" },
+  deskImage: {
+    height: 200,
+    width: 200,
+    resizeMode: "contain",
+    marginVertical: 10,
+  },
+  body: {
+    textAlign: "center",
+    paddingHorizontal: 20,
+    fontSize: 14,
+    color: "#333",
+  },
+  footer: {
+    alignItems: "center",
+    gap: 10,
+  },
 });
