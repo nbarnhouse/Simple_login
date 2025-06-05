@@ -5,9 +5,11 @@ import {
   StyleSheet,
   TextInput,
   View,
+  KeyboardAvoidingView,
 } from "react-native";
 import React from "react";
 import { useRouter, Link } from "expo-router";
+import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import GlobalStyles from "@/GlobalStyles";
@@ -16,6 +18,8 @@ import CustomBackButton from "@/components/CustomBackButton";
 
 const LoginScreen = () => {
   const router = useRouter();
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   // const handleLogin = async () => {
   //   await AsyncStorage.setItem("userToken", "abc123");
@@ -30,28 +34,22 @@ const LoginScreen = () => {
         <Text style={GlobalStyles.title}>Welcome</Text>
         <Text style={GlobalStyles.title}>Back</Text>
       </View>
-      <View>
-        <TextInput style={styles.inputField} placeholder="Enter your email" />
+      <KeyboardAvoidingView behavior="padding">
+        <TextInput
+          style={styles.inputField}
+          placeholder="Enter your email"
+          value={userName}
+          onChangeText={setUserName}
+        />
         <TextInput
           style={styles.inputField}
           secureTextEntry={true}
           placeholder="Enter your password"
+          value={password}
+          onChangeText={setPassword}
         />
-      </View>
+      </KeyboardAvoidingView>
       <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
-      {/* <TouchableOpacity
-        style={{
-          height: 60,
-          backgroundColor: "#000000",
-          margin: 10,
-          borderRadius: 30,
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-        onPress={() => router.back()}
-      >
-        <Text style={{ color: "white", fontWeight: "bold" }}>Login</Text>
-      </TouchableOpacity> */}
 
       <SimpleButton
         label="login"
