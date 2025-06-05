@@ -20,6 +20,7 @@ This app is your personal workspace hub — designed to help you stay organized,
 ## Options if not already installed
 
 - expo-router
+- react-native-svg
 
 ## File Structure
 

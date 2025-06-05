@@ -1,16 +1,15 @@
 import { Link } from "expo-router";
-import { Text, View, StyleSheet, Image } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { Text, View, StyleSheet, Image, SafeAreaView } from "react-native";
 
 import logo from "../../assets/images/logo.png";
-import deskTimeLogo from "../../assets/images/desk_image.png";
+import DeskLogo from "@/assets/svg/DeskLogo";
 
 export default function Index() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
-        <Image source={deskTimeLogo} style={styles.deskImage} />
+        <DeskLogo style={styles.deskImage} height={250} width={250} />
         <Text style={styles.title}>DeskTime Login</Text>
         <Text style={styles.tagline}>Your digital desk awaits.</Text>
         <Text style={styles.body}>
@@ -48,9 +47,6 @@ const styles = StyleSheet.create({
   tagline: { fontSize: 16, fontStyle: "italic", color: "#555" },
   logo: { height: 50, resizeMode: "contain" },
   deskImage: {
-    height: 200,
-    width: 200,
-    resizeMode: "contain",
     marginVertical: 10,
   },
   body: {

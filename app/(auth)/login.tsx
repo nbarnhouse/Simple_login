@@ -18,10 +18,10 @@ const LoginScreen = () => {
   // };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={styles.container}>
       <Text>LoginScreen</Text>
 
-      <TextInput style={styles.inputField}></TextInput>
+      <TextInput style={styles.inputField} placeholder="Enter text" />
 
       <TouchableOpacity onPress={() => router.back()}>
         <Text>Go back</Text>
@@ -39,10 +39,13 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
+    backgroundColor: "#e5eef8",
   },
 
   inputField: {
-    width: 343,
-    height: 602,
+    height: 40,
+    borderWidth: 1,
+    margin: 10,
+    borderRadius: 20,
   },
 });
