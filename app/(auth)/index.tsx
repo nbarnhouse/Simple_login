@@ -1,16 +1,24 @@
 import { Link } from "expo-router";
 import { Text, View, StyleSheet, Image, SafeAreaView } from "react-native";
-
 import logo from "../../assets/images/logo.png";
 import DeskLogo from "@/assets/svg/DeskLogo";
+import GlobalStyles from "@/GlobalStyles";
+import { use, useEffect } from "react";
+import { useRouter } from "expo-router";
 
 export default function Index() {
+  const router = useRouter();
+
+  // useEffect(() => {
+  //   router.replace("/login");
+  // }, [router]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
         <DeskLogo style={styles.deskImage} height={250} width={250} />
-        <Text style={styles.title}>DeskTime Login</Text>
+        <Text style={GlobalStyles.title}>DeskTime Login</Text>
         <Text style={styles.tagline}>Your digital desk awaits.</Text>
         <Text style={styles.body}>
           Stay organized, focused, and on top of your day. This app is your
@@ -35,15 +43,10 @@ export default function Index() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 20,
     justifyContent: "space-around",
     backgroundColor: "#e5eef8",
   },
   header: { alignItems: "center", gap: 10 },
-  title: {
-    fontSize: 36,
-    marginBottom: 10,
-  },
   tagline: { fontSize: 16, fontStyle: "italic", color: "#555" },
   logo: { height: 50, resizeMode: "contain" },
   deskImage: {
