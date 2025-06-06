@@ -14,7 +14,7 @@ export default function Index() {
   // }, [router]);
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={{ flex: 1 }}>
       <View style={styles.header}>
         <Image source={logo} style={styles.logo} />
         <DeskLogo style={styles.deskImage} height={250} width={250} />
@@ -41,25 +41,24 @@ export default function Index() {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "space-around",
-    backgroundColor: "#e5eef8",
+  header: {
+    //gap: 10
   },
-  header: { alignItems: "center", gap: 10 },
-  tagline: { fontSize: 16, fontStyle: "italic", color: "#555" },
-  logo: { height: 50, resizeMode: "contain" },
+  tagline: {
+    //fontSize: 16, fontStyle: "italic", color: "#555"
+  },
+  logo: {
+    //height: 50, resizeMode: "contain"
+  },
   deskImage: {
-    marginVertical: 10,
+    // marginVertical: 10,
   },
   body: {
-    textAlign: "center",
-    paddingHorizontal: 20,
-    fontSize: 14,
-    color: "#333",
+    // paddingHorizontal: 20,
+    // fontSize: 14,
+    // color: "#333",
   },
   footer: {
-    alignItems: "center",
-    gap: 10,
+    // gap: 10,
   },
 });

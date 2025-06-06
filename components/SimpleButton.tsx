@@ -26,7 +26,6 @@ const styles = StyleSheet.create({
   buttonShape: {
     height: 60,
     borderRadius: 30,
-    margin: 10,
     justifyContent: "center",
     alignItems: "center",
   },

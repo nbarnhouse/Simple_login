@@ -15,6 +15,7 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import GlobalStyles from "@/GlobalStyles";
 import SimpleButton from "@/components/SimpleButton";
 import CustomBackButton from "@/components/CustomBackButton";
+import GoogleButton from "@/components/GoogleButton";
 
 const LoginScreen = () => {
   const router = useRouter();
@@ -27,29 +28,31 @@ const LoginScreen = () => {
   // };
 
   return (
-    <SafeAreaView style={GlobalStyles.container}>
-      <CustomBackButton />
+    <View style={GlobalStyles.container}>
+      <Text>Login Screen</Text>
+      {/* <CustomBackButton />
       <View>
         <Text style={GlobalStyles.title}>Hey,</Text>
         <Text style={GlobalStyles.title}>Welcome</Text>
         <Text style={GlobalStyles.title}>Back</Text>
       </View>
-      <KeyboardAvoidingView behavior="padding">
-        <TextInput
-          style={styles.inputField}
-          placeholder="Enter your email"
-          value={userName}
-          onChangeText={setUserName}
-        />
-        <TextInput
-          style={styles.inputField}
-          secureTextEntry={true}
-          placeholder="Enter your password"
-          value={password}
-          onChangeText={setPassword}
-        />
-      </KeyboardAvoidingView>
-      <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
+
+      <TextInput
+        style={styles.inputField}
+        placeholder="Enter your email"
+        value={userName}
+        onChangeText={setUserName}
+      />
+      <TextInput
+        style={styles.inputField}
+        secureTextEntry={true}
+        placeholder="Enter your password"
+        value={password}
+        onChangeText={setPassword}
+      />
+      <View style={{ alignItems: "flex-end" }}>
+        <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
+      </View>
 
       <SimpleButton
         label="login"
@@ -59,40 +62,28 @@ const LoginScreen = () => {
         }}
       />
 
-      <Text>or continue with</Text>
-      <TouchableOpacity
-        style={{
-          height: 60,
-          backgroundColor: "white",
-          borderRadius: 30,
-          margin: 10,
-          justifyContent: "center",
-          alignItems: "center",
-          borderWidth: 1,
-        }}
-        onPress={() => router.push("/(auth)/register")}
-      >
-        <Text>Google</Text>
-      </TouchableOpacity>
-      <Text>
+      <Text style={GlobalStyles.spacerText}>or continue with</Text>
+
+      <GoogleButton />
+
+      <Text style={GlobalStyles.spacerText}>
         Don't have an account?{" "}
         <Link href="/(auth)/register">
           <Text style={{ fontWeight: "bold" }}>Sign Up</Text>{" "}
         </Link>
-      </Text>
-    </SafeAreaView>
+      </Text> */}
+    </View>
   );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-  inputField: {
-    height: 50,
-    borderWidth: 1,
-    margin: 10,
-    borderRadius: 25,
-    borderColor: "#AEB5BB",
-    paddingLeft: 20,
-  },
-});
+//
+// const styles = StyleSheet.create({
+//   inputField: {
+//     height: 50,
+//     borderWidth: 1,
+//     borderRadius: 25,
+//     borderColor: "#AEB5BB",
+//     paddingLeft: 20,
+//   },
+// });
