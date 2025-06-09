@@ -19,6 +19,8 @@ import ScreenWrapper from "@/components/ScreenWrapper";
 const RegisterScreen = () => {
   const router = useRouter();
   const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <ScreenWrapper>
@@ -32,6 +34,19 @@ const RegisterScreen = () => {
         placeholder="Enter your name"
         value={name}
         onChangeText={setName}
+      />
+      <TextInput
+        style={GlobalStyles.inputField}
+        placeholder="Enter your email"
+        value={userName}
+        onChangeText={setUserName}
+      />
+      <TextInput
+        style={GlobalStyles.inputField}
+        secureTextEntry={true}
+        placeholder="Enter your password"
+        value={password}
+        onChangeText={setPassword}
       />
       <SimpleButton
         label="Sign up"

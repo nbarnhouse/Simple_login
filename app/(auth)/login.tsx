@@ -39,14 +39,14 @@ const LoginScreen = () => {
 
       <TextInput
         style={GlobalStyles.inputField}
-        placeholder="Enter your email"
+        placeholder="Username"
         value={userName}
         onChangeText={setUserName}
       />
       <TextInput
         style={GlobalStyles.inputField}
         secureTextEntry={true}
-        placeholder="Enter your password"
+        placeholder="Password"
         value={password}
         onChangeText={setPassword}
       />
