@@ -18,7 +18,7 @@ const RegisterScreen = () => {
   return (
     <View style={{ flex: 1 }}>
       <Text>Register Screen</Text>
-      {/* <Text>Hey, Welcome Back</Text>
+      <Text>Hey, Welcome Back</Text>
       <Text>Register Screen</Text>
       <CustomBackButton />
       <Text>or continue with</Text>
@@ -26,13 +26,13 @@ const RegisterScreen = () => {
 
       <Text>
         Aready have an account! <Link href="/(auth)/login">Login</Link>
-      </Text> */}
+      </Text>
     </View>
   );
 };
 
 export default RegisterScreen;
 
-// const styles = StyleSheet.create({
-//   container: {},
-// });
+const styles = StyleSheet.create({
+  container: {},
+});

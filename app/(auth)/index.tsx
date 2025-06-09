@@ -42,23 +42,26 @@ export default function Index() {
 
 const styles = StyleSheet.create({
   header: {
-    //gap: 10
+    gap: 10,
   },
   tagline: {
-    //fontSize: 16, fontStyle: "italic", color: "#555"
+    fontSize: 16,
+    fontStyle: "italic",
+    color: "#555",
   },
   logo: {
-    //height: 50, resizeMode: "contain"
+    height: 50,
+    //resizeMode: "contain",
   },
   deskImage: {
-    // marginVertical: 10,
+    marginVertical: 10,
   },
   body: {
-    // paddingHorizontal: 20,
-    // fontSize: 14,
-    // color: "#333",
+    paddingHorizontal: 20,
+    fontSize: 14,
+    color: "#333",
   },
   footer: {
-    // gap: 10,
+    gap: 10,
   },
 });

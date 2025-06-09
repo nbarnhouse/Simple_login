@@ -29,8 +29,7 @@ const LoginScreen = () => {
 
   return (
     <View style={GlobalStyles.container}>
-      <Text>Login Screen</Text>
-      {/* <CustomBackButton />
+      <CustomBackButton />
       <View>
         <Text style={GlobalStyles.title}>Hey,</Text>
         <Text style={GlobalStyles.title}>Welcome</Text>
@@ -71,19 +70,19 @@ const LoginScreen = () => {
         <Link href="/(auth)/register">
           <Text style={{ fontWeight: "bold" }}>Sign Up</Text>{" "}
         </Link>
-      </Text> */}
+      </Text>
     </View>
   );
 };
 
 export default LoginScreen;
-//
-// const styles = StyleSheet.create({
-//   inputField: {
-//     height: 50,
-//     borderWidth: 1,
-//     borderRadius: 25,
-//     borderColor: "#AEB5BB",
-//     paddingLeft: 20,
-//   },
-// });
+
+const styles = StyleSheet.create({
+  inputField: {
+    height: 50,
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: "#AEB5BB",
+    paddingLeft: 20,
+  },
+});
