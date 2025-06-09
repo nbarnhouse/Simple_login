@@ -28,61 +28,53 @@ const LoginScreen = () => {
   // };
 
   return (
-    <View style={GlobalStyles.container}>
-      <CustomBackButton />
-      <View>
-        <Text style={GlobalStyles.title}>Hey,</Text>
-        <Text style={GlobalStyles.title}>Welcome</Text>
-        <Text style={GlobalStyles.title}>Back</Text>
+    <SafeAreaView style={GlobalStyles.background}>
+      <View style={GlobalStyles.container}>
+        <CustomBackButton />
+        <View>
+          <Text style={GlobalStyles.title}>Hey,</Text>
+          <Text style={GlobalStyles.title}>Welcome</Text>
+          <Text style={GlobalStyles.title}>Back</Text>
+        </View>
+
+        <TextInput
+          style={GlobalStyles.inputField}
+          placeholder="Enter your email"
+          value={userName}
+          onChangeText={setUserName}
+        />
+        <TextInput
+          style={GlobalStyles.inputField}
+          secureTextEntry={true}
+          placeholder="Enter your password"
+          value={password}
+          onChangeText={setPassword}
+        />
+        <View style={{ alignItems: "flex-end" }}>
+          <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
+        </View>
+
+        <SimpleButton
+          label="Login"
+          backgroundColor="black"
+          onPress={() => {
+            console.log("Login button pushed");
+          }}
+        />
+
+        <Text style={GlobalStyles.spacerText}>or continue with</Text>
+
+        <GoogleButton />
+
+        <Text style={GlobalStyles.spacerText}>
+          Don't have an account?{" "}
+          <Link href="/(auth)/register">
+            <Text style={{ fontWeight: "bold" }}>Sign Up</Text>{" "}
+          </Link>
+        </Text>
       </View>
-
-      <TextInput
-        style={styles.inputField}
-        placeholder="Enter your email"
-        value={userName}
-        onChangeText={setUserName}
-      />
-      <TextInput
-        style={styles.inputField}
-        secureTextEntry={true}
-        placeholder="Enter your password"
-        value={password}
-        onChangeText={setPassword}
-      />
-      <View style={{ alignItems: "flex-end" }}>
-        <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
-      </View>
-
-      <SimpleButton
-        label="login"
-        backgroundColor="black"
-        onPress={() => {
-          console.log("Login button pushed");
-        }}
-      />
-
-      <Text style={GlobalStyles.spacerText}>or continue with</Text>
-
-      <GoogleButton />
-
-      <Text style={GlobalStyles.spacerText}>
-        Don't have an account?{" "}
-        <Link href="/(auth)/register">
-          <Text style={{ fontWeight: "bold" }}>Sign Up</Text>{" "}
-        </Link>
-      </Text>
-    </View>
+    </SafeAreaView>
   );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({
-  inputField: {
-    height: 50,
-    borderWidth: 1,
-    borderRadius: 25,
-    borderColor: "#AEB5BB",
-    paddingLeft: 20,
-  },
-});

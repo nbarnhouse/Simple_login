@@ -18,6 +18,13 @@ const GlobalStyles = StyleSheet.create({
   spacerText: {
     alignSelf: "center",
   },
+  inputField: {
+    height: 60,
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: "#AEB5BB",
+    paddingLeft: 20,
+  },
 });
 
 export default GlobalStyles;

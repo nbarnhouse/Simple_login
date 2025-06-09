@@ -14,27 +14,29 @@ export default function Index() {
   // }, [router]);
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <View style={styles.header}>
-        <Image source={logo} style={styles.logo} />
-        <DeskLogo style={styles.deskImage} height={250} width={250} />
-        <Text style={GlobalStyles.title}>DeskTime Login</Text>
-        <Text style={styles.tagline}>Your digital desk awaits.</Text>
-        <Text style={styles.body}>
-          Stay organized, focused, and on top of your day. This app is your
-          personal workspace hub — like sitting down at your desk, anytime,
-          anywhere.
-        </Text>
-      </View>
+    <SafeAreaView style={GlobalStyles.background}>
+      <View style={GlobalStyles.container}>
+        <View style={styles.header}>
+          <Image source={logo} style={styles.logo} />
+          <DeskLogo style={styles.deskImage} height={250} width={250} />
+          <Text style={GlobalStyles.title}>DeskTime Login</Text>
+          <Text style={styles.tagline}>Your digital desk awaits.</Text>
+          <Text style={styles.body}>
+            Stay organized, focused, and on top of your day. This app is your
+            personal workspace hub — like sitting down at your desk, anytime,
+            anywhere.
+          </Text>
+        </View>
 
-      <View style={styles.footer}>
-        <Text style={styles.body}>Ready to get started?</Text>
-        <Link href={"/login"} style={styles.body}>
-          Go to login
-        </Link>
-        <Link href={"/register"} style={styles.body}>
-          Go to sign in
-        </Link>
+        <View style={styles.footer}>
+          <Text style={styles.body}>Ready to get started?</Text>
+          <Link href={"/login"} style={styles.body}>
+            Go to login
+          </Link>
+          <Link href={"/register"} style={styles.body}>
+            Go to sign up
+          </Link>
+        </View>
       </View>
     </SafeAreaView>
   );
