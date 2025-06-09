@@ -6,6 +6,8 @@ import GlobalStyles from "@/GlobalStyles";
 import { use, useEffect } from "react";
 import { useRouter } from "expo-router";
 
+import ScreenWrapper from "@/components/ScreenWrapper";
+
 export default function Index() {
   const router = useRouter();
 
@@ -14,37 +16,36 @@ export default function Index() {
   // }, [router]);
 
   return (
-    <SafeAreaView style={GlobalStyles.background}>
-      <View style={GlobalStyles.container}>
-        <View style={styles.header}>
-          <Image source={logo} style={styles.logo} />
-          <DeskLogo style={styles.deskImage} height={250} width={250} />
-          <Text style={GlobalStyles.title}>DeskTime Login</Text>
-          <Text style={styles.tagline}>Your digital desk awaits.</Text>
-          <Text style={styles.body}>
-            Stay organized, focused, and on top of your day. This app is your
-            personal workspace hub — like sitting down at your desk, anytime,
-            anywhere.
-          </Text>
-        </View>
-
-        <View style={styles.footer}>
-          <Text style={styles.body}>Ready to get started?</Text>
-          <Link href={"/login"} style={styles.body}>
-            Go to login
-          </Link>
-          <Link href={"/register"} style={styles.body}>
-            Go to sign up
-          </Link>
-        </View>
+    <ScreenWrapper>
+      <View style={styles.header}>
+        <Image source={logo} style={styles.logo} />
+        <DeskLogo style={styles.deskImage} height={250} width={250} />
+        <Text style={GlobalStyles.title}>DeskTime Login</Text>
+        <Text style={styles.tagline}>Your digital desk awaits.</Text>
+        <Text style={styles.body}>
+          Stay organized, focused, and on top of your day. This app is your
+          personal workspace hub — like sitting down at your desk, anytime,
+          anywhere.
+        </Text>
       </View>
-    </SafeAreaView>
+
+      <View style={styles.footer}>
+        <Text style={styles.body}>Ready to get started?</Text>
+        <Link href={"/login"} style={styles.body}>
+          Go to login
+        </Link>
+        <Link href={"/register"} style={styles.body}>
+          Go to sign up
+        </Link>
+      </View>
+    </ScreenWrapper>
   );
 }
 
 const styles = StyleSheet.create({
   header: {
     gap: 10,
+    alignItems: "center",
   },
   tagline: {
     fontSize: 16,
@@ -53,7 +54,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     height: 50,
-    //resizeMode: "contain",
+    resizeMode: "contain",
   },
   deskImage: {
     marginVertical: 10,
@@ -65,5 +66,6 @@ const styles = StyleSheet.create({
   },
   footer: {
     gap: 10,
+    alignItems: "center",
   },
 });
