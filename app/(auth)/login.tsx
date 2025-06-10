@@ -11,17 +11,20 @@ import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
+import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 
 import GlobalStyles from "@/GlobalStyles";
+import ScreenWrapper from "@/components/ScreenWrapper";
 import SimpleButton from "@/components/SimpleButton";
 import CustomBackButton from "@/components/CustomBackButton";
 import GoogleButton from "@/components/GoogleButton";
-import ScreenWrapper from "@/components/ScreenWrapper";
 
 const LoginScreen = () => {
   const router = useRouter();
   const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [secureTextEntry, setSecureTextEntry] = useState(true);
+  const [textEntryIcon, setTextEntryIcon] = useState<"eye" | "eye-off">("eye");
 
   // const handleLogin = async () => {
   //   await AsyncStorage.setItem("userToken", "abc123");
@@ -37,26 +40,52 @@ const LoginScreen = () => {
         <Text style={GlobalStyles.title}>Back</Text>
       </View>
 
-      <TextInput
-        style={GlobalStyles.inputField}
-        placeholder="Username"
-        value={userName}
-        onChangeText={setUserName}
-      />
-      <View style={styles.textWrapper}>
+      <View style={styles.inputFieldWrapper}>
+        <FontAwesome5
+          name="user-circle"
+          size={18}
+          color="#aaa"
+          style={styles.icon}
+        />
         <TextInput
-          style={GlobalStyles.inputField}
-          secureTextEntry={true}
+          style={styles.inputField}
+          placeholder="Username"
+          value={userName}
+          onChangeText={setUserName}
+        />
+      </View>
+
+      <View style={styles.inputFieldWrapper}>
+        <MaterialCommunityIcons
+          name="form-textbox-password"
+          size={18}
+          color="#aaa"
+          style={styles.icon}
+        />
+
+        <TextInput
+          style={styles.inputField}
+          secureTextEntry={secureTextEntry}
           placeholder="Password"
           value={password}
           onChangeText={setPassword}
           placeholderTextColor="#aaa"
         />
-        <TouchableOpacity>
-          <Feather name="eye" size={18} color="#aaa" />
-          <Feather name="eye" size={18} color="#aaa" />
+        <TouchableOpacity
+          onPress={() => {
+            setSecureTextEntry(!secureTextEntry);
+            setTextEntryIcon(secureTextEntry ? "eye" : "eye-off");
+          }}
+        >
+          <Feather
+            name={textEntryIcon}
+            size={18}
+            color="#aaa"
+            style={styles.icon}
+          />
         </TouchableOpacity>
       </View>
+
       <View style={{ alignItems: "flex-end" }}>
         <Link href={"/ForgotPassword"} style={{ fontWeight: "bold" }}>
           Forgot Password?
@@ -65,6 +94,7 @@ const LoginScreen = () => {
 
       <SimpleButton
         label="Login"
+        textColor="white"
         backgroundColor="black"
         onPress={() => {
           console.log("Login button pushed");
@@ -75,10 +105,12 @@ const LoginScreen = () => {
 
       <GoogleButton />
 
-      <Text style={GlobalStyles.spacerText}>Don't have an account?</Text>
-      <Link href="/(auth)/Register">
-        <Text style={{ fontWeight: "bold" }}>Sign Up </Text>
-      </Link>
+      <Text style={GlobalStyles.spacerText}>
+        Don't have an account?{" "}
+        <Link href="/(auth)/Register" style={{ fontWeight: "bold" }}>
+          Sign Up
+        </Link>
+      </Text>
     </ScreenWrapper>
   );
 };
@@ -86,7 +118,19 @@ const LoginScreen = () => {
 export default LoginScreen;
 
 const styles = StyleSheet.create({
-  textWrapper: {
-    marginRight: 10,
+  inputFieldWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
+    borderWidth: 1,
+    borderRadius: 25,
+    borderColor: "#AEB5BB",
+    paddingLeft: 20,
+  },
+  icon: {
+    marginHorizontal: 10,
+  },
+  inputField: {
+    flex: 1,
+    height: 55,
   },
 });

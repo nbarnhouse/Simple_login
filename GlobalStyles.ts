@@ -19,7 +19,7 @@ const GlobalStyles = StyleSheet.create({
     alignSelf: "center",
   },
   inputField: {
-    height: 60,
+    height: 55,
     borderWidth: 1,
     borderRadius: 25,
     borderColor: "#AEB5BB",

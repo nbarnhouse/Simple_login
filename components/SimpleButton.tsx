@@ -5,32 +5,33 @@ type CustomButtonProps = {
   label: string;
   onPress: () => void;
   backgroundColor: string;
+  textColor: string;
 };
 
 export default function SimpleButton({
   label,
   onPress,
   backgroundColor,
+  textColor,
 }: CustomButtonProps) {
   return (
     <TouchableOpacity
-      style={[styles.buttonShape, { backgroundColor }]}
+      style={[styles.buttonContainer, { backgroundColor }]}
       onPress={onPress}
     >
-      <Text style={styles.text}>{label}</Text>
+      <Text style={[styles.text, { color: textColor }]}>{label}</Text>
     </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
-  buttonShape: {
-    height: 60,
-    borderRadius: 30,
+  buttonContainer: {
     justifyContent: "center",
     alignItems: "center",
+    height: 55,
+    borderRadius: 30,
   },
   text: {
-    color: "white",
     fontWeight: "bold",
   },
 });

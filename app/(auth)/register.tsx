@@ -3,6 +3,8 @@ import React from "react";
 import { useRouter, Link } from "expo-router";
 import { useState } from "react";
 
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
+
 import CustomBackButton from "@/components/CustomBackButton";
 import GlobalStyles from "@/GlobalStyles";
 import GoogleButton from "@/components/GoogleButton";
@@ -43,6 +45,7 @@ const RegisterScreen = () => {
       />
       <SimpleButton
         label="Sign up"
+        textColor="white"
         backgroundColor="black"
         onPress={() => {
           console.log("Sign up button pressed");
@@ -53,7 +56,7 @@ const RegisterScreen = () => {
 
       <Text>
         Aready have an account!{" "}
-        <Link href="/(auth)/login" style={{ fontWeight: "bold" }}>
+        <Link href="/(auth)/Login" style={{ fontWeight: "bold" }}>
           Login
         </Link>
       </Text>
@@ -62,3 +65,10 @@ const RegisterScreen = () => {
 };
 
 export default RegisterScreen;
+
+// <FontAwesome5
+//   name="envelope-open"
+//   size={18}
+//   color="#aaa"
+//   style={styles.icon}
+// />

@@ -30,12 +30,14 @@ export default function Index() {
       </View>
 
       <View style={styles.footer}>
-        <Text style={styles.body}>Ready to get started?</Text>
+        <Text style={[styles.body, { fontWeight: "bold" }]}>
+          Ready to get started?
+        </Text>
         <Link href={"/Login"} style={styles.body}>
-          Go to login
+          Login
         </Link>
         <Link href={"/Register"} style={styles.body}>
-          Go to sign up
+          Sign up
         </Link>
       </View>
     </ScreenWrapper>
@@ -63,6 +65,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 14,
     color: "#333",
+    // fontWeight: "bold",
   },
   footer: {
     gap: 10,

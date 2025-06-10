@@ -21,7 +21,7 @@ export default function GoogleButton() {
 
 const styles = StyleSheet.create({
   buttonShape: {
-    height: 60,
+    height: 55,
     backgroundColor: "#e5eef8",
     borderRadius: 30,
     justifyContent: "center",
