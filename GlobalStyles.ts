@@ -18,12 +18,20 @@ const GlobalStyles = StyleSheet.create({
   spacerText: {
     alignSelf: "center",
   },
-  inputField: {
-    height: 55,
+  inputFieldWrapper: {
+    flexDirection: "row",
+    alignItems: "center",
     borderWidth: 1,
     borderRadius: 25,
     borderColor: "#AEB5BB",
     paddingLeft: 20,
+  },
+  icon: {
+    marginHorizontal: 10,
+  },
+  inputField: {
+    flex: 1,
+    height: 55,
   },
 });
 

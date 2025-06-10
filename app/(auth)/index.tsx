@@ -1,12 +1,10 @@
 import { Link } from "expo-router";
-import { Text, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image, SafeAreaView } from "react-native";
 import logo from "../../assets/images/logo.png";
 import DeskLogo from "@/assets/svg/DeskLogo";
 import GlobalStyles from "@/GlobalStyles";
 import { use, useEffect } from "react";
 import { useRouter } from "expo-router";
-
-import ScreenWrapper from "@/components/ScreenWrapper";
 
 export default function Index() {
   const router = useRouter();
@@ -16,31 +14,36 @@ export default function Index() {
   // }, [router]);
 
   return (
-    <ScreenWrapper>
-      <View style={styles.header}>
-        <Image source={logo} style={styles.logo} />
-        <DeskLogo style={styles.deskImage} height={250} width={250} />
-        <Text style={GlobalStyles.title}>DeskTime Login</Text>
-        <Text style={styles.tagline}>Your digital desk awaits.</Text>
-        <Text style={styles.body}>
-          Stay organized, focused, and on top of your day. This app is your
-          personal workspace hub — like sitting down at your desk, anytime,
-          anywhere.
-        </Text>
-      </View>
+    <SafeAreaView style={GlobalStyles.background}>
+      <View style={GlobalStyles.container}>
+        <View style={styles.header}>
+          <Image source={logo} style={styles.logo} />
+          <DeskLogo style={styles.deskImage} height={250} width={250} />
+          <Text style={GlobalStyles.title}>DeskTime Login</Text>
+          <Text style={styles.tagline}>Your digital desk awaits.</Text>
+          <Text style={styles.body}>
+            Stay organized, focused, and on top of your day. This app is your
+            personal workspace hub — like sitting down at your desk, anytime,
+            anywhere.
+          </Text>
+        </View>
 
-      <View style={styles.footer}>
-        <Text style={[styles.body, { fontWeight: "bold" }]}>
-          Ready to get started?
-        </Text>
-        <Link href={"/Login"} style={styles.body}>
-          Login
-        </Link>
-        <Link href={"/Register"} style={styles.body}>
-          Sign up
-        </Link>
+        <View style={styles.footer}>
+          <Text style={styles.tagline}>
+            Ready to get started?{" "}
+            <Link href={"/Login"} style={{ fontWeight: "bold" }}>
+              Login
+            </Link>
+          </Text>
+          <Text style={styles.tagline}>
+            Need to Create an account?{" "}
+            <Link href={"/SignUp"} style={{ fontWeight: "bold" }}>
+              Sign up
+            </Link>
+          </Text>
+        </View>
       </View>
-    </ScreenWrapper>
+    </SafeAreaView>
   );
 }
 
@@ -65,7 +68,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     fontSize: 14,
     color: "#333",
-    // fontWeight: "bold",
   },
   footer: {
     gap: 10,

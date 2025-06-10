@@ -4,18 +4,18 @@ import CustomBackButton from "@/components/CustomBackButton";
 import GlobalStyles from "@/GlobalStyles";
 import ScreenWrapper from "@/components/ScreenWrapper";
 
-const ForgotPasswordScreen = () => {
+const HomeScreen = ({ Name: String }) => {
   return (
     <ScreenWrapper>
       <View style={{ alignItems: "center" }}>
-        <Text style={styles.title}>You have forgotten your password!</Text>
+        <Text style={styles.title}>Welcome, {Name} You logged in!</Text>
         <CustomBackButton />
       </View>
     </ScreenWrapper>
   );
 };
 
-export default ForgotPasswordScreen;
+export default HomeScreen;
 
 const styles = StyleSheet.create({
   title: {

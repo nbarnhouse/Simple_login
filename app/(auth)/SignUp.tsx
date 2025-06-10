@@ -1,45 +1,38 @@
 import {
   Text,
-  TextInput,
-  View,
-  StyleSheet,
   TouchableOpacity,
+  View,
+  TextInput,
   SafeAreaView,
   KeyboardAvoidingView,
-  Platform,
   TouchableWithoutFeedback,
+  Platform,
   Keyboard,
 } from "react-native";
 import React from "react";
 import { useRouter, Link } from "expo-router";
 import { useState } from "react";
 
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-import GlobalStyles from "@/GlobalStyles";
-import ScreenWrapper from "@/components/ScreenWrapper";
-import SimpleButton from "@/components/SimpleButton";
 import CustomBackButton from "@/components/CustomBackButton";
+import GlobalStyles from "@/GlobalStyles";
 import GoogleButton from "@/components/GoogleButton";
+import SimpleButton from "@/components/SimpleButton";
 
-const LoginScreen = () => {
+const SignUpScreen = () => {
   const router = useRouter();
-  const [username, setUsername] = useState("");
+  const [name, setName] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [textEntryIcon, setTextEntryIcon] = useState<"eye" | "eye-off">("eye");
 
-  // const handleLogin = async () => {
-  //   await AsyncStorage.setItem("userToken", "abc123");
-  //   router.replace("/");
-  // };
-
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <SafeAreaView style={GlobalStyles.background}>
+    <SafeAreaView style={GlobalStyles.background}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 30}
@@ -47,9 +40,8 @@ const LoginScreen = () => {
         >
           <CustomBackButton />
           <View>
-            <Text style={GlobalStyles.title}>Hey,</Text>
-            <Text style={GlobalStyles.title}>Welcome</Text>
-            <Text style={GlobalStyles.title}>Back</Text>
+            <Text style={GlobalStyles.title}>Let's get</Text>
+            <Text style={GlobalStyles.title}>started</Text>
           </View>
 
           <View style={GlobalStyles.inputFieldWrapper}>
@@ -61,9 +53,24 @@ const LoginScreen = () => {
             />
             <TextInput
               style={GlobalStyles.inputField}
-              placeholder="Username"
-              value={username}
-              onChangeText={setUsername}
+              placeholder="Enter your name"
+              value={name}
+              onChangeText={setName}
+            />
+          </View>
+
+          <View style={GlobalStyles.inputFieldWrapper}>
+            <FontAwesome5
+              name="envelope-open"
+              size={18}
+              color="#aaa"
+              style={GlobalStyles.icon}
+            />
+            <TextInput
+              style={GlobalStyles.inputField}
+              placeholder="Enter your email"
+              value={userName}
+              onChangeText={setUserName}
             />
           </View>
 
@@ -78,7 +85,7 @@ const LoginScreen = () => {
             <TextInput
               style={GlobalStyles.inputField}
               secureTextEntry={secureTextEntry}
-              placeholder="Password"
+              placeholder="Enter your password"
               value={password}
               onChangeText={setPassword}
               placeholderTextColor="#aaa"
@@ -99,37 +106,27 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
 
-          <View style={{ alignItems: "flex-end" }}>
-            <Link href={"/ForgotPassword"} style={{ fontWeight: "bold" }}>
-              Forgot Password?
-            </Link>
-          </View>
-
           <SimpleButton
-            label="Login"
+            label="Sign up"
             textColor="white"
             backgroundColor="black"
             onPress={() => {
-              console.log("Login button pushed");
+              console.log("Sign up button pressed");
             }}
           />
-
-          <Text style={GlobalStyles.spacerText}>or continue with</Text>
-
+          <Text style={{ alignSelf: "center" }}>or register with</Text>
           <GoogleButton />
 
-          <Text style={GlobalStyles.spacerText}>
-            Don't have an account?{" "}
-            <Link href="/(auth)/SignUp" style={{ fontWeight: "bold" }}>
-              Sign Up
+          <Text style={{ alignSelf: "center" }}>
+            Aready have an account!{" "}
+            <Link href="/(auth)/Login" style={{ fontWeight: "bold" }}>
+              Login
             </Link>
           </Text>
         </KeyboardAvoidingView>
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   );
 };
 
-export default LoginScreen;
-
-const styles = StyleSheet.create({});
+export default SignUpScreen;

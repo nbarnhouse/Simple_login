@@ -17,7 +17,7 @@ const ScreenWrapper = ({ children }: { children: ReactNode }) => {
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 30}
           style={GlobalStyles.container}
         >
           {children}
