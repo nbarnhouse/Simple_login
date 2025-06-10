@@ -1,5 +1,5 @@
 import { Link } from "expo-router";
-import { Text, View, StyleSheet, Image, SafeAreaView } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 import logo from "../../assets/images/logo.png";
 import DeskLogo from "@/assets/svg/DeskLogo";
 import GlobalStyles from "@/GlobalStyles";
@@ -31,10 +31,10 @@ export default function Index() {
 
       <View style={styles.footer}>
         <Text style={styles.body}>Ready to get started?</Text>
-        <Link href={"/login"} style={styles.body}>
+        <Link href={"/Login"} style={styles.body}>
           Go to login
         </Link>
-        <Link href={"/register"} style={styles.body}>
+        <Link href={"/Register"} style={styles.body}>
           Go to sign up
         </Link>
       </View>

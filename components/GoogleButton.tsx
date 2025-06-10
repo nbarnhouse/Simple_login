@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, Linking } from "react-native";
 import React from "react";
 import { useRouter } from "expo-router";
 import GoogleG from "@/assets/svg/GoogleG";
@@ -7,7 +7,7 @@ export default function GoogleButton() {
   const router = useRouter();
 
   const handleGButtonPress = () => {
-    router.push("/(auth)/register");
+    Linking.openURL("https://accounts.google.com/");
   };
 
   return (

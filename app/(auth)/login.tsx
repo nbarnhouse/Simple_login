@@ -1,17 +1,17 @@
 import {
   Text,
-  TouchableOpacity,
-  SafeAreaView,
-  StyleSheet,
   TextInput,
   View,
-  KeyboardAvoidingView,
+  StyleSheet,
+  TouchableOpacity,
 } from "react-native";
 import React from "react";
 import { useRouter, Link } from "expo-router";
 import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import Feather from "@expo/vector-icons/Feather";
+
 import GlobalStyles from "@/GlobalStyles";
 import SimpleButton from "@/components/SimpleButton";
 import CustomBackButton from "@/components/CustomBackButton";
@@ -43,15 +43,24 @@ const LoginScreen = () => {
         value={userName}
         onChangeText={setUserName}
       />
-      <TextInput
-        style={GlobalStyles.inputField}
-        secureTextEntry={true}
-        placeholder="Password"
-        value={password}
-        onChangeText={setPassword}
-      />
+      <View style={styles.textWrapper}>
+        <TextInput
+          style={GlobalStyles.inputField}
+          secureTextEntry={true}
+          placeholder="Password"
+          value={password}
+          onChangeText={setPassword}
+          placeholderTextColor="#aaa"
+        />
+        <TouchableOpacity>
+          <Feather name="eye" size={18} color="#aaa" />
+          <Feather name="eye" size={18} color="#aaa" />
+        </TouchableOpacity>
+      </View>
       <View style={{ alignItems: "flex-end" }}>
-        <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
+        <Link href={"/ForgotPassword"} style={{ fontWeight: "bold" }}>
+          Forgot Password?
+        </Link>
       </View>
 
       <SimpleButton
@@ -66,14 +75,18 @@ const LoginScreen = () => {
 
       <GoogleButton />
 
-      <Text style={GlobalStyles.spacerText}>
-        Don't have an account?{" "}
-        <Link href="/(auth)/register">
-          <Text style={{ fontWeight: "bold" }}>Sign Up</Text>{" "}
-        </Link>
-      </Text>
+      <Text style={GlobalStyles.spacerText}>Don't have an account?</Text>
+      <Link href="/(auth)/Register">
+        <Text style={{ fontWeight: "bold" }}>Sign Up </Text>
+      </Link>
     </ScreenWrapper>
   );
 };
 
 export default LoginScreen;
+
+const styles = StyleSheet.create({
+  textWrapper: {
+    marginRight: 10,
+  },
+});

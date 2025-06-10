@@ -1,11 +1,4 @@
-import {
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-  StyleSheet,
-  View,
-  TextInput,
-} from "react-native";
+import { Text, TouchableOpacity, View, TextInput } from "react-native";
 import React from "react";
 import { useRouter, Link } from "expo-router";
 import { useState } from "react";
@@ -55,7 +48,7 @@ const RegisterScreen = () => {
           console.log("Sign up button pressed");
         }}
       />
-      <Text>or continue with</Text>
+      <Text style={{ alignSelf: "center" }}>or register with</Text>
       <GoogleButton />
 
       <Text>
