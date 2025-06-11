@@ -1,14 +1,14 @@
 import { StyleSheet, Text, View } from "react-native";
-import React from "react";
+
 import CustomBackButton from "@/components/CustomBackButton";
-import GlobalStyles from "@/GlobalStyles";
 import ScreenWrapper from "@/components/ScreenWrapper";
 
-const HomeScreen = ({ Name: String }) => {
+const HomeScreen = () => {
+  const { name } = JSON.parse("user");
   return (
     <ScreenWrapper>
       <View style={{ alignItems: "center" }}>
-        <Text style={styles.title}>Welcome, {Name} You logged in!</Text>
+        <Text style={styles.title}>Welcome, ${name} You are logged in!</Text>
         <CustomBackButton />
       </View>
     </ScreenWrapper>

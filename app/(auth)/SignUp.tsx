@@ -13,6 +13,7 @@ import React from "react";
 import { useRouter, Link } from "expo-router";
 import { useState } from "react";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
@@ -30,12 +31,25 @@ const SignUpScreen = () => {
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [textEntryIcon, setTextEntryIcon] = useState<"eye" | "eye-off">("eye");
 
+  const handleSignUp = async () => {
+    try {
+      const user = { name, userName, password };
+      console.log("User signed up:", user);
+
+      await AsyncStorage.setItem("user", JSON.stringify(user));
+      console.log("User signed up:", user);
+      router.push("/(app)/Home");
+    } catch (error) {
+      console.error("Error signing up:", error);
+    }
+  };
+
   return (
     <SafeAreaView style={GlobalStyles.background}>
       <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 30}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
           style={GlobalStyles.container}
         >
           <CustomBackButton />
@@ -56,6 +70,7 @@ const SignUpScreen = () => {
               placeholder="Enter your name"
               value={name}
               onChangeText={setName}
+              placeholderTextColor="#aaa"
             />
           </View>
 
@@ -71,6 +86,7 @@ const SignUpScreen = () => {
               placeholder="Enter your email"
               value={userName}
               onChangeText={setUserName}
+              placeholderTextColor="#aaa"
             />
           </View>
 
@@ -110,9 +126,7 @@ const SignUpScreen = () => {
             label="Sign up"
             textColor="white"
             backgroundColor="black"
-            onPress={() => {
-              console.log("Sign up button pressed");
-            }}
+            onPress={handleSignUp}
           />
           <Text style={{ alignSelf: "center" }}>or register with</Text>
           <GoogleButton />

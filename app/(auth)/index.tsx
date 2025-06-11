@@ -41,6 +41,13 @@ export default function Index() {
               Sign up
             </Link>
           </Text>
+
+          <Text style={{ alignSelf: "center" }}>
+            Test Home Page{" "}
+            <Link href="/(app)/Home" style={{ fontWeight: "bold" }}>
+              Home
+            </Link>
+          </Text>
         </View>
       </View>
     </SafeAreaView>

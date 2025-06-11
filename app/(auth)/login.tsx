@@ -9,6 +9,7 @@ import {
   Platform,
   TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
 import React from "react";
 import { useRouter, Link } from "expo-router";
@@ -20,29 +21,43 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import GlobalStyles from "@/GlobalStyles";
-import ScreenWrapper from "@/components/ScreenWrapper";
 import SimpleButton from "@/components/SimpleButton";
 import CustomBackButton from "@/components/CustomBackButton";
 import GoogleButton from "@/components/GoogleButton";
 
 const LoginScreen = () => {
   const router = useRouter();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [inputUsername, setInputUsername] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [textEntryIcon, setTextEntryIcon] = useState<"eye" | "eye-off">("eye");
 
-  // const handleLogin = async () => {
-  //   await AsyncStorage.setItem("userToken", "abc123");
-  //   router.replace("/");
-  // };
+  const handleLogin = async () => {
+    try {
+      const storedUser = await AsyncStorage.getItem("user");
+
+      if (!storedUser) {
+        Alert.alert("Error", "No user found. Please sign up first.");
+        return;
+      }
+
+      const { username, password, name } = JSON.parse(storedUser);
+      if (inputUsername === username && inputPassword === password) {
+        Alert.alert(`Login success, Welcome back ${name}!`);
+      } else {
+        Alert.alert("Login failed", "Invalid username or password.");
+      }
+    } catch (error) {
+      Alert.alert("Error", "An error occurred while logging in.");
+    }
+  };
 
   return (
-    <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-      <SafeAreaView style={GlobalStyles.background}>
+    <SafeAreaView style={GlobalStyles.background}>
+      <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
         <KeyboardAvoidingView
           behavior={Platform.OS === "ios" ? "padding" : "height"}
-          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 30}
+          keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
           style={GlobalStyles.container}
         >
           <CustomBackButton />
@@ -62,8 +77,9 @@ const LoginScreen = () => {
             <TextInput
               style={GlobalStyles.inputField}
               placeholder="Username"
-              value={username}
-              onChangeText={setUsername}
+              value={inputUsername}
+              onChangeText={setInputUsername}
+              placeholderTextColor="#aaa"
             />
           </View>
 
@@ -79,8 +95,8 @@ const LoginScreen = () => {
               style={GlobalStyles.inputField}
               secureTextEntry={secureTextEntry}
               placeholder="Password"
-              value={password}
-              onChangeText={setPassword}
+              value={inputPassword}
+              onChangeText={setInputPassword}
               placeholderTextColor="#aaa"
             />
             <TouchableOpacity
@@ -125,11 +141,9 @@ const LoginScreen = () => {
             </Link>
           </Text>
         </KeyboardAvoidingView>
-      </SafeAreaView>
-    </TouchableWithoutFeedback>
+      </TouchableWithoutFeedback>
+    </SafeAreaView>
   );
 };
 
 export default LoginScreen;
-
-const styles = StyleSheet.create({});
