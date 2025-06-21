@@ -13,7 +13,7 @@ const HomeScreen = () => {
       try {
         const storedUser = await AsyncStorage.getItem("user");
         if (storedUser) {
-          const { name } = JSON.parser(storedUser);
+          const { name } = JSON.parse(storedUser);
           setName(name);
         }
       } catch (err) {
@@ -26,7 +26,7 @@ const HomeScreen = () => {
   return (
     <ScreenWrapper>
       <View style={{ alignItems: "center" }}>
-        <Text style={styles.title}>Welcome, {name} You are logged in!</Text>
+        <Text style={styles.title}>Welcome {name}, You are logged in!</Text>
       </View>
     </ScreenWrapper>
   );

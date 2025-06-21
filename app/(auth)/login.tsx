@@ -10,9 +10,8 @@ import {
   Keyboard,
   Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter, Link } from "expo-router";
-import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
@@ -20,7 +19,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import GlobalStyles from "@/GlobalStyles";
-import SimpleButton from "@/components/SimpleButton";
+import SimpleAuthButton from "@/components/SimpleAuthButton";
 import CustomBackButton from "@/components/CustomBackButton";
 import GoogleButton from "@/components/GoogleButton";
 
@@ -41,8 +40,9 @@ const LoginScreen = () => {
       }
 
       const { username, password, name } = JSON.parse(storedUser);
+
       if (inputUsername === username && inputPassword === password) {
-        Alert.alert(`Login success, Welcome back ${name}!`);
+        Alert.alert("Login success", `Welcome back ${name}!`);
         setInputUsername("");
         setInputPassword("");
         router.push("/(app)/Home");
@@ -51,6 +51,7 @@ const LoginScreen = () => {
       }
     } catch (error) {
       Alert.alert("Error", "An error occurred while logging in.");
+      console.error("Login error:", error);
     }
   };
 
@@ -69,6 +70,7 @@ const LoginScreen = () => {
               <Text style={GlobalStyles.title}>Welcome</Text>
               <Text style={GlobalStyles.title}>Back</Text>
             </View>
+
             <View style={GlobalStyles.inputFieldWrapper}>
               <FontAwesome5
                 name="user-circle"
@@ -82,8 +84,11 @@ const LoginScreen = () => {
                 value={inputUsername}
                 onChangeText={setInputUsername}
                 placeholderTextColor="#aaa"
+                autoCapitalize="none"
+                keyboardType="email-address"
               />
             </View>
+
             <View style={GlobalStyles.inputFieldWrapper}>
               <MaterialCommunityIcons
                 name="form-textbox-password"
@@ -98,6 +103,7 @@ const LoginScreen = () => {
                 value={inputPassword}
                 onChangeText={setInputPassword}
                 placeholderTextColor="#aaa"
+                autoCapitalize="none"
               />
               <TouchableOpacity
                 onPress={() => {
@@ -114,19 +120,25 @@ const LoginScreen = () => {
                 />
               </TouchableOpacity>
             </View>
+
             <View style={{ alignItems: "flex-end" }}>
               <Link href={"/ForgotPassword"}>
                 <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
               </Link>
             </View>
-            <SimpleButton
+
+            <SimpleAuthButton
               label="Login"
               textColor="white"
               backgroundColor="black"
-              onPress={handleLogin}
+              username={inputUsername}
+              password={inputPassword}
+              onSuccess={handleLogin}
             />
+
             <Text style={GlobalStyles.spacerText}>or continue with</Text>
             <GoogleButton />
+
             <Link href="/(auth)/SignUp" asChild>
               <Text style={GlobalStyles.spacerText}>
                 Don't have an account?

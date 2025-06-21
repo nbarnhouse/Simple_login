@@ -1,48 +1,54 @@
 import {
   Text,
-  TouchableOpacity,
-  View,
   TextInput,
+  View,
+  TouchableOpacity,
   SafeAreaView,
   KeyboardAvoidingView,
-  TouchableWithoutFeedback,
   Platform,
+  TouchableWithoutFeedback,
   Keyboard,
+  Alert,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter, Link } from "expo-router";
-import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
 import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-import CustomBackButton from "@/components/CustomBackButton";
 import GlobalStyles from "@/GlobalStyles";
+import SimpleAuthButton from "@/components/SimpleAuthButton";
+import CustomBackButton from "@/components/CustomBackButton";
 import GoogleButton from "@/components/GoogleButton";
-import SimpleButton from "@/components/SimpleButton";
 
 const SignUpScreen = () => {
   const router = useRouter();
   const [name, setName] = useState("");
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [inputUsername, setInputUsername] = useState("");
+  const [inputPassword, setInputPassword] = useState("");
   const [secureTextEntry, setSecureTextEntry] = useState(true);
   const [textEntryIcon, setTextEntryIcon] = useState<"eye" | "eye-off">("eye");
 
   const handleSignUp = async () => {
-    const user = { name, username, password };
+    if (!name.trim()) {
+      Alert.alert("Invalid Name", "Please enter your name.");
+      return;
+    }
+
+    const user = { name, username: inputUsername, password: inputPassword };
 
     try {
       await AsyncStorage.setItem("user", JSON.stringify(user));
-      console.log("User data saved to Async storage:", user);
-      setUsername("");
-      setPassword("");
+      Alert.alert("Success", "User registered!");
       setName("");
-      //router.push("/(app)/Home");
+      setInputUsername("");
+      setInputPassword("");
+      router.push("/(app)/Home");
     } catch (error) {
-      console.error("Error signing up:", error);
+      Alert.alert("Error", "Failed to save user data.");
+      console.error("SignUp error:", error);
     }
   };
 
@@ -87,9 +93,11 @@ const SignUpScreen = () => {
               <TextInput
                 style={GlobalStyles.inputField}
                 placeholder="Enter your email"
-                value={username}
-                onChangeText={setUsername}
+                value={inputUsername}
+                onChangeText={setInputUsername}
                 placeholderTextColor="#aaa"
+                autoCapitalize="none"
+                keyboardType="email-address"
               />
             </View>
 
@@ -100,14 +108,14 @@ const SignUpScreen = () => {
                 color="#aaa"
                 style={GlobalStyles.icon}
               />
-
               <TextInput
                 style={GlobalStyles.inputField}
                 secureTextEntry={secureTextEntry}
                 placeholder="Enter your password"
-                value={password}
-                onChangeText={setPassword}
+                value={inputPassword}
+                onChangeText={setInputPassword}
                 placeholderTextColor="#aaa"
+                autoCapitalize="none"
               />
               <TouchableOpacity
                 onPress={() => {
@@ -125,19 +133,22 @@ const SignUpScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <SimpleButton
+            <SimpleAuthButton
               label="Sign up"
               textColor="white"
               backgroundColor="black"
-              onPress={handleSignUp}
+              username={inputUsername}
+              password={inputPassword}
+              onSuccess={handleSignUp}
             />
+
             <Text style={{ alignSelf: "center" }}>or register with</Text>
             <GoogleButton />
 
             <Link href="/(auth)/Login" asChild>
               <Text style={GlobalStyles.spacerText}>
-                Aready have an account!{" "}
-                <Text style={{ fontWeight: "bold" }}>Login</Text>
+                Already have an account?
+                <Text style={{ fontWeight: "bold" }}> Login</Text>
               </Text>
             </Link>
           </View>
