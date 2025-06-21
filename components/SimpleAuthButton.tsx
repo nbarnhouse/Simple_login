@@ -1,39 +1,35 @@
 import React from "react";
-import { TouchableOpacity, Text, StyleSheet } from "react-native";
+import { TouchableOpacity, Text, StyleSheet, Alert } from "react-native";
 
 type Props = {
   label: string;
   textColor?: string;
   backgroundColor?: string;
-  name: string;
   username: string;
   password: string;
-  onSuccess: () => void; // callback to run if validation passes
+  onSuccess: () => void;
+  disabled?: boolean;
 };
 
 const SimpleAuthButton: React.FC<Props> = ({
   label,
   textColor = "white",
   backgroundColor = "black",
-  name,
   username,
   password,
   onSuccess,
+  disabled = false,
 }) => {
   const validateInputs = () => {
-    if (name.trim().length === 0) {
-      alert("Please enter your name.");
-      return false;
-    }
-
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
     if (!emailRegex.test(username)) {
-      alert("Please enter a valid email address.");
+      Alert.alert("Invalid Email", "Please enter a valid email address.");
       return false;
     }
 
-    if (password.length === 0) {
-      alert("Please enter a password.");
+    if (!password || password.length === 0) {
+      Alert.alert("Invalid Password", "Please enter your password.");
       return false;
     }
 
@@ -41,6 +37,7 @@ const SimpleAuthButton: React.FC<Props> = ({
   };
 
   const handlePress = () => {
+    if (disabled) return;
     if (validateInputs()) {
       onSuccess();
     }
@@ -48,8 +45,13 @@ const SimpleAuthButton: React.FC<Props> = ({
 
   return (
     <TouchableOpacity
-      style={[styles.button, { backgroundColor }]}
+      style={[
+        styles.button,
+        { backgroundColor: disabled ? "#ccc" : backgroundColor },
+      ]}
       onPress={handlePress}
+      activeOpacity={disabled ? 1 : 0.7}
+      disabled={disabled}
     >
       <Text style={[styles.label, { color: textColor }]}>{label}</Text>
     </TouchableOpacity>
