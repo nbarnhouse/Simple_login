@@ -57,8 +57,9 @@ const LoginScreen = () => {
   return (
     <SafeAreaView style={GlobalStyles.background}>
       <KeyboardAvoidingView
+        style={{ flex: 1 }}
         behavior={Platform.OS === "ios" ? "padding" : "height"}
-        keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 20 : 10}
       >
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <View style={GlobalStyles.container}>
@@ -68,7 +69,6 @@ const LoginScreen = () => {
               <Text style={GlobalStyles.title}>Welcome</Text>
               <Text style={GlobalStyles.title}>Back</Text>
             </View>
-
             <View style={GlobalStyles.inputFieldWrapper}>
               <FontAwesome5
                 name="user-circle"
@@ -84,7 +84,6 @@ const LoginScreen = () => {
                 placeholderTextColor="#aaa"
               />
             </View>
-
             <View style={GlobalStyles.inputFieldWrapper}>
               <MaterialCommunityIcons
                 name="form-textbox-password"
@@ -92,7 +91,6 @@ const LoginScreen = () => {
                 color="#aaa"
                 style={GlobalStyles.icon}
               />
-
               <TextInput
                 style={GlobalStyles.inputField}
                 secureTextEntry={secureTextEntry}
@@ -116,30 +114,25 @@ const LoginScreen = () => {
                 />
               </TouchableOpacity>
             </View>
-
             <View style={{ alignItems: "flex-end" }}>
-              <Link href={"/ForgotPassword"} style={{ fontWeight: "bold" }}>
-                Forgot Password?
+              <Link href={"/ForgotPassword"}>
+                <Text style={{ fontWeight: "bold" }}>Forgot Password?</Text>
               </Link>
             </View>
-
             <SimpleButton
               label="Login"
               textColor="white"
               backgroundColor="black"
               onPress={handleLogin}
             />
-
             <Text style={GlobalStyles.spacerText}>or continue with</Text>
-
             <GoogleButton />
-
-            <Text style={GlobalStyles.spacerText}>
-              Don't have an account?{" "}
-              <Link href="/(auth)/SignUp" style={{ fontWeight: "bold" }}>
-                Sign Up
-              </Link>
-            </Text>
+            <Link href="/(auth)/SignUp" asChild>
+              <Text style={GlobalStyles.spacerText}>
+                Don't have an account?
+                <Text style={{ fontWeight: "bold" }}> Sign Up</Text>
+              </Text>
+            </Link>
           </View>
         </TouchableWithoutFeedback>
       </KeyboardAvoidingView>

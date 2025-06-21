@@ -48,93 +48,101 @@ const SignUpScreen = () => {
 
   return (
     <SafeAreaView style={GlobalStyles.background}>
-      <View style={GlobalStyles.container}>
-        <CustomBackButton />
-        <View>
-          <Text style={GlobalStyles.title}>Let's get</Text>
-          <Text style={GlobalStyles.title}>started</Text>
-        </View>
+      <KeyboardAvoidingView
+        style={{ flex: 1 }}
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        keyboardVerticalOffset={Platform.OS === "ios" ? 20 : 10}
+      >
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View style={GlobalStyles.container}>
+            <CustomBackButton />
+            <View>
+              <Text style={GlobalStyles.title}>Let's get</Text>
+              <Text style={GlobalStyles.title}>started</Text>
+            </View>
 
-        <View style={GlobalStyles.inputFieldWrapper}>
-          <FontAwesome5
-            name="user-circle"
-            size={18}
-            color="#aaa"
-            style={GlobalStyles.icon}
-          />
-          <TextInput
-            style={GlobalStyles.inputField}
-            placeholder="Enter your name"
-            value={name}
-            onChangeText={setName}
-            placeholderTextColor="#aaa"
-          />
-        </View>
+            <View style={GlobalStyles.inputFieldWrapper}>
+              <FontAwesome5
+                name="user-circle"
+                size={18}
+                color="#aaa"
+                style={GlobalStyles.icon}
+              />
+              <TextInput
+                style={GlobalStyles.inputField}
+                placeholder="Enter your name"
+                value={name}
+                onChangeText={setName}
+                placeholderTextColor="#aaa"
+              />
+            </View>
 
-        <View style={GlobalStyles.inputFieldWrapper}>
-          <FontAwesome5
-            name="envelope-open"
-            size={18}
-            color="#aaa"
-            style={GlobalStyles.icon}
-          />
-          <TextInput
-            style={GlobalStyles.inputField}
-            placeholder="Enter your email"
-            value={username}
-            onChangeText={setUsername}
-            placeholderTextColor="#aaa"
-          />
-        </View>
+            <View style={GlobalStyles.inputFieldWrapper}>
+              <FontAwesome5
+                name="envelope-open"
+                size={18}
+                color="#aaa"
+                style={GlobalStyles.icon}
+              />
+              <TextInput
+                style={GlobalStyles.inputField}
+                placeholder="Enter your email"
+                value={username}
+                onChangeText={setUsername}
+                placeholderTextColor="#aaa"
+              />
+            </View>
 
-        <View style={GlobalStyles.inputFieldWrapper}>
-          <MaterialCommunityIcons
-            name="form-textbox-password"
-            size={18}
-            color="#aaa"
-            style={GlobalStyles.icon}
-          />
+            <View style={GlobalStyles.inputFieldWrapper}>
+              <MaterialCommunityIcons
+                name="form-textbox-password"
+                size={18}
+                color="#aaa"
+                style={GlobalStyles.icon}
+              />
 
-          <TextInput
-            style={GlobalStyles.inputField}
-            secureTextEntry={secureTextEntry}
-            placeholder="Enter your password"
-            value={password}
-            onChangeText={setPassword}
-            placeholderTextColor="#aaa"
-          />
-          <TouchableOpacity
-            onPress={() => {
-              setSecureTextEntry(!secureTextEntry);
-              setTextEntryIcon(secureTextEntry ? "eye" : "eye-off");
-            }}
-            style={GlobalStyles.icon}
-          >
-            <Feather
-              name={textEntryIcon}
-              size={18}
-              color="#aaa"
-              style={GlobalStyles.icon}
+              <TextInput
+                style={GlobalStyles.inputField}
+                secureTextEntry={secureTextEntry}
+                placeholder="Enter your password"
+                value={password}
+                onChangeText={setPassword}
+                placeholderTextColor="#aaa"
+              />
+              <TouchableOpacity
+                onPress={() => {
+                  setSecureTextEntry(!secureTextEntry);
+                  setTextEntryIcon(secureTextEntry ? "eye" : "eye-off");
+                }}
+                style={GlobalStyles.icon}
+              >
+                <Feather
+                  name={textEntryIcon}
+                  size={18}
+                  color="#aaa"
+                  style={GlobalStyles.icon}
+                />
+              </TouchableOpacity>
+            </View>
+
+            <SimpleButton
+              label="Sign up"
+              textColor="white"
+              backgroundColor="black"
+              onPress={handleSignUp}
             />
-          </TouchableOpacity>
-        </View>
+            <Text style={{ alignSelf: "center" }}>or register with</Text>
+            <GoogleButton />
 
-        <SimpleButton
-          label="Sign up"
-          textColor="white"
-          backgroundColor="black"
-          onPress={handleSignUp}
-        />
-        <Text style={{ alignSelf: "center" }}>or register with</Text>
-        <GoogleButton />
-
-        <Text style={{ alignSelf: "center" }}>
-          Aready have an account!{" "}
-          <Link href="/(auth)/Login" style={{ fontWeight: "bold" }}>
-            Login
-          </Link>
-        </Text>
-      </View>
+            <Link href="/(auth)/Login" asChild>
+              <Text style={GlobalStyles.spacerText}>
+                Aready have an account!{" "}
+                <Text style={{ fontWeight: "bold" }}>Login</Text>
+              </Text>
+            </Link>
+          </View>
+        </TouchableWithoutFeedback>
+      </KeyboardAvoidingView>
     </SafeAreaView>
   );
 };
