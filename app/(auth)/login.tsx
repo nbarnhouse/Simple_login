@@ -20,7 +20,7 @@ import MaterialCommunityIcons from "@expo/vector-icons/MaterialCommunityIcons";
 import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
 import GlobalStyles from "@/GlobalStyles";
-import SimpleButton from "@/components/SimpleButton";
+import SimpleButton from "@/components/SimpleAuthButton";
 import CustomBackButton from "@/components/CustomBackButton";
 import GoogleButton from "@/components/GoogleButton";
 

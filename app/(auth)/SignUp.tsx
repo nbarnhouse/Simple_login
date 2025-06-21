@@ -9,9 +9,8 @@ import {
   Platform,
   Keyboard,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useRouter, Link } from "expo-router";
-import { useState } from "react";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Feather from "@expo/vector-icons/Feather";
@@ -21,7 +20,7 @@ import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import CustomBackButton from "@/components/CustomBackButton";
 import GlobalStyles from "@/GlobalStyles";
 import GoogleButton from "@/components/GoogleButton";
-import SimpleButton from "@/components/SimpleButton";
+import SimpleAuthButton from "@/components/SimpleAuthButton";
 
 const SignUpScreen = () => {
   const router = useRouter();
@@ -40,7 +39,7 @@ const SignUpScreen = () => {
       setUsername("");
       setPassword("");
       setName("");
-      //router.push("/(app)/Home");
+      router.push("/Home");
     } catch (error) {
       console.error("Error signing up:", error);
     }
@@ -125,18 +124,22 @@ const SignUpScreen = () => {
               </TouchableOpacity>
             </View>
 
-            <SimpleButton
+            <SimpleAuthButton
               label="Sign up"
               textColor="white"
               backgroundColor="black"
-              onPress={handleSignUp}
+              name={name}
+              username={username}
+              password={password}
+              onSuccess={handleSignUp}
             />
+
             <Text style={{ alignSelf: "center" }}>or register with</Text>
             <GoogleButton />
 
             <Link href="/(auth)/Login" asChild>
               <Text style={GlobalStyles.spacerText}>
-                Aready have an account!{" "}
+                Already have an account!{" "}
                 <Text style={{ fontWeight: "bold" }}>Login</Text>
               </Text>
             </Link>
