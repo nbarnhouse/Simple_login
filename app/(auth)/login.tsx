@@ -42,7 +42,6 @@ const LoginScreen = () => {
       const { username, password, name } = JSON.parse(storedUser);
 
       if (inputUsername === username && inputPassword === password) {
-        Alert.alert("Login success", `Welcome back ${name}!`);
         setInputUsername("");
         setInputPassword("");
         router.push("/(app)/Home");
